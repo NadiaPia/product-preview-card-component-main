@@ -1,0 +1,189 @@
+:root {
+  --clr-primary-dark_cyan: hsl(158, 36%, 37%);  /*primary-400*/
+  --clr-primary-darker_cyan: hsl(158, 36%, 20%);  /*primary-500*/
+
+  --clr-primary-cream: hsl(30, 38%, 92%); /*secondary-200*/
+
+  --clr-neutral-very_dark_blue: hsl(212, 21%, 14%); /*neutral-900*/
+  --clr-neutral-dark_grayish_blue: hsl(228, 12%, 48%); /*neutral-400*/
+  --clr-neutral-white: hsl(0, 0%, 100%); /*neutral-100*/
+
+  --ff-accent: 'Fraunces', serif;
+  --ff-base: 'Montserrat', sans-serif;
+
+
+  --fw-regular: 500;
+  --fw-bold: 700;
+
+
+}
+
+/*______________https://www.joshwcomeau.com/css/custom-css-reset/________________*/
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+    2. Remove default margin
+  */
+* {
+  margin: 0;
+}
+
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+body {
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+    5. Improve media defaults
+  */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+    6. Remove built-in form typography styles
+  */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+    7. Avoid text overflows
+  */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  /*allows to avoid gorizontal scrolling if words are too big for the small screen*/
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1;
+}
+
+/*__________________________________________________*/
+
+/*geeral styling*/
+
+body {
+  font-family: var(--ff-base);
+  font-weight: var(--fw-regular);
+  font-size: 0.875rem;
+  color: var(--clr-neutral-very_dark_blue);
+  background-color: var(--clr-primary-cream);
+
+  /*for this project only*/
+  display:grid;
+  min-height: 100vh;
+  place-content: center;
+  margin: 1rem;
+}
+
+/*utilities*/
+
+.flex-group {
+  display: flex; /*make row align as a default*/
+  gap: 1rem; /*space btw elements*/
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/*button*/
+.button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 0.5rem;
+  padding: 0.75em 1.5em;
+  text-decoration: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--clr-primary-dark_cyan);
+  color: var(--clr-neutral-white);
+  font-weight: var(--fw-bold);
+  font-size: 0.925em;
+}
+
+.button[data-icon="shopping-cart"]::before {
+  content: "";
+  background-image: url(images/icon-cart.svg);
+  width: 15px;
+  height: 16px;
+}
+
+.button:is(:hover, :focus) { /*"is" make a group of :hover and :focus*/
+  background-color: var(--clr-primary-darker_cyan);
+}
+
+
+/*product styles*/
+
+.product {
+  --content-padding: 1.5rem; /*local rule*/
+  --content-spacing: 1rem;
+
+  background-color: var(--clr-neutral-white);
+  border-radius: 0.5rem;
+  overflow: hidden; /*to make elements on the corners have radius*/
+  display: grid;
+  max-width: 600px;
+}
+
+@media (min-width: 600px) {
+  .product {
+    --content-padding: 2rem;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.product__content {
+  padding: var(--content-padding);
+  display: grid; /*stratched 'add to card' bottom wide 100% by default*/
+  gap: var(--content-spacing) /*because it is grid*/
+}
+
+.product__category {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 0.8125rem;
+}
+
+.product__title {
+  font-size: 2rem;
+  font-family: var(--ff-accent);
+  color: var(--clr-neutral-very_dark_blue);
+}
+
+.product__price {
+  font-size: 2rem;
+  font-family: var(--ff-accent);
+  color: var(--clr-primary-dark_cyan)
+}
